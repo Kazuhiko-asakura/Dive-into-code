@@ -10,7 +10,12 @@
 <ul> 
 <li><%= link_to "Top", root_path %></li> 
 <li><a href="#">お問い合わせ</a></li> 
-</ul> 
+<% if user_signed_in? %> 
+ <li><%= link_to "Logout", destroy_user_session_path, method: :delete %></li> 
+<% else %>
+  <li><%= link_to "Login", new_user_session_path %></li> 
+<% end %>
+  </ul> 
 </nav>
 </div> 
 </div> 

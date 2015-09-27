@@ -1,0 +1,34 @@
+<%= form_for @inquiry, url: inquiry_confirm_path do |f| %>
+<div class="page-header">
+  <h1>お問い合わせ</h1>
+    <p>すべての入力欄にご入力ください</p>
+</div>
+
+<% if @inquiry.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@inquiry.errors.count, "error") %>入力された内容にエラーがあります。</h2>
+  
+  <ul>
+    <% @inquiry.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<table class="table">
+  <tr>
+    <th>名前<span class="text-danger"></span></th>
+    <td><%= f.text_field :name %></td>
+    </tr>
+  <tr>
+    <th>メールアドレス<span class="text-danger"></span></th>
+    <td><%= f.text_field :email %></td>
+     </tr>
+  <tr>
+    <th>お問い合わせ内容</th>
+    <td><%= f.text_area :message %></td>
+    </tr>
+  </table>
+<%= f.submit '確認', class: 'btn btn-primary' %>
+<% end %>
